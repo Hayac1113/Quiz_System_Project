@@ -2,14 +2,14 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import model.Course;
+import model.Cursus;
 
 public class StudentSignInOutController {
 
     @FXML
-    private ListView<Course> signedOutCourseList;
+    private ListView<Cursus> signedOutCourseList;
     @FXML
-    private ListView <Course> signedInCourseList;
+    private ListView <Cursus> signedInCourseList;
 
     public void setup() {}
 

@@ -1,17 +1,15 @@
 package controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import model.Course;
+import model.Cursus;
 import model.Question;
 import model.Quiz;
 
 public class CoordinatorDashboardController {
 
     @FXML
-    private ListView<Course> courseList;
+    private ListView<Cursus> courseList;
     @FXML
     private ListView<Quiz> quizList;
     @FXML

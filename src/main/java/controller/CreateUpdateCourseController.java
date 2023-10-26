@@ -1,10 +1,10 @@
 package controller;
 
-import model.Course;
+import model.Cursus;
 
 public class CreateUpdateCourseController {
 
-    public void setup(Course course) {}
+    public void setup(Cursus course) {}
 
     public void doMenu() {}
 

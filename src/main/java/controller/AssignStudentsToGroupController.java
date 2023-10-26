@@ -1,23 +1,16 @@
 package controller;
 
-import database.mysql.*;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import model.Course;
+import model.Cursus;
 import model.Group;
 import model.User;
-import view.Main;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AssignStudentsToGroupController {
 
     @FXML
-    ComboBox<Course> courseComboBox;
+    ComboBox<Cursus> courseComboBox;
     @FXML
     ComboBox<Group> groupComboBox;
     @FXML
