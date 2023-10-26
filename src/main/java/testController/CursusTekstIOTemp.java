@@ -11,8 +11,7 @@ public class CursusTekstIOTemp {
     public static List<Cursus> loadCSV(String fileName) {
         List<Cursus> listofCourses = new ArrayList<>();
         File file = new File(String.format("src/main/resources/CSV bestanden/%s", fileName));
-        try {
-            Scanner input = new Scanner(file);
+        try (Scanner input = new Scanner(file)) {
             while (input.hasNextLine()) {
                 String[] lineArray = input.nextLine().split(",");
                 String courseName = lineArray[0];

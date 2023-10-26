@@ -54,25 +54,26 @@ public class Quiz {
     public String getCourseName() {
         return courseName;
     }
+
     public static List<Quiz> loadCSV(String filename) {
         List<Quiz> listOfQuizzes = new ArrayList<>();
         File filename2 = new File(String.format("src/main/resources/CSV bestanden/%s", filename));
-        try {
-            Scanner input = new Scanner(filename2);
-            while (input.hasNextLine()){
-                String [] lineArray = input.nextLine().split(",");
+        try (Scanner input = new Scanner(filename2)) {
+            while (input.hasNextLine()) {
+                String[] lineArray = input.nextLine().split(",");
                 String quizName = lineArray[0];
                 String level = lineArray[1];
                 String succesDefinition = lineArray[2];
                 String courseName = lineArray[3];
                 listOfQuizzes.add(new Quiz(quizName, level, Integer.parseInt(succesDefinition), courseName));
             }
-        } catch (FileNotFoundException notFound){
+        } catch (FileNotFoundException notFound) {
             System.out.println("File not found");
         }
         return listOfQuizzes;
 
     }
+
     @Override
     public String toString() {
         return String.format("%s %s %d %s \n", quizName, level, succesDefinition, courseName);

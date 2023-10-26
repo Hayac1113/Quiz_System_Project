@@ -23,8 +23,8 @@ public class User {
         this.role = role;
     }
 
-    public User(){
-        this("Onbekend","Onbekend","Onbekend","Onbekend","Onbekend",
+    public User() {
+        this("Onbekend", "Onbekend", "Onbekend", "Onbekend", "Onbekend",
                 "Onbekend");
     }
 
@@ -79,19 +79,18 @@ public class User {
     public static List<User> loadCSV(String filename) {
         List<User> listOfUser = new ArrayList<>();
         File filename2 = new File(String.format("src/main/resources/CSV bestanden/%s", filename));
-        try {
-            Scanner input = new Scanner(filename2);
-            while (input.hasNextLine()){
-                String [] lineArray = input.nextLine().split(",");
+        try (Scanner input = new Scanner(filename2)) {
+            while (input.hasNextLine()) {
+                String[] lineArray = input.nextLine().split(",");
                 String username = lineArray[0];
                 String password = lineArray[1];
                 String firstName = lineArray[2];
-                String infix= lineArray[3];
+                String infix = lineArray[3];
                 String lastName = lineArray[4];
                 String role = lineArray[5];
                 listOfUser.add(new User(username, password, firstName, infix, lastName, role));
             }
-        } catch (FileNotFoundException notFound){
+        } catch (FileNotFoundException notFound) {
             System.out.println("File not found");
         }
         return listOfUser;
