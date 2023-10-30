@@ -1,6 +1,6 @@
 package database.mysql;
 
-import model.Cursus;
+import model.Course;
 import testController.CursusTekstIOTemp;
 
 import java.sql.ResultSet;
@@ -8,71 +8,55 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CursusDAO extends AbstractDAO implements GenericDAO<Cursus> {
+public class CourseDAO extends AbstractDAO implements GenericDAO<Course, String> {
 
-    public CursusDAO(DBAccess dbAccess) {
+    public CourseDAO(DBAccess dbAccess) {
         super(dbAccess);
     }
 
     @Override
-    public List<Cursus> getAll() {
-        String sql = "SELECT cursusNaam, coordinator, niveau FROM CursusTable"; // Adjust table name accordingly
-        List<Cursus> cursusList = new ArrayList<>();
+    public List<Course> getAll() {
+        String sql = "SELECT courseName, coordinator, level FROM Course";
+        List<Course> courseList = new ArrayList<>();
         try {
             setupPreparedStatement(sql);
             ResultSet resultSet = executeSelectStatement();
             while (resultSet.next()) {
-                Cursus cursus = new Cursus(
-                        resultSet.getString("cursusNaam"),
-                        resultSet.getString("coordinator"),
-                        resultSet.getString("niveau")
-                );
-                cursusList.add(cursus);
+                String courseName = resultSet.getString("courseName");
+                String coordinator = resultSet.getString("coordinator");
+                String level = resultSet.getString("level");
+                Course course = new Course(courseName, coordinator, level);
+                courseList.add(course);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return cursusList;
+        return courseList;
     }
 
     @Override
-    public Cursus getOneByPK(Cursus cursus) {
-        String sql = "SELECT cursusNaam, coordinator, niveau FROM CursusTable WHERE cursusNaam = ?"; // Adjust table name and primary key accordingly
-        try {
-            setupPreparedStatement(sql);
-            preparedStatement.setString(1, cursus.getCursusNaam());
-            ResultSet resultSet = executeSelectStatement();
-            if (resultSet.next()) {
-                return new Cursus(
-                        resultSet.getString("cursusNaam"),
-                        resultSet.getString("coordinator"),
-                        resultSet.getString("niveau")
-                );
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public Course getOneByPK(String PK) {
         return null;
     }
 
     @Override
-    public void storeOne(Cursus cursus) {
-        String sql = "INSERT INTO CursusTable (cursusNaam, coordinator, niveau) VALUES (?, ?, ?)"; // Adjust table name accordingly
+    public void storeOne(Course course) {
+        String sql = "INSERT INTO Course (courseName, coordinator, level) VALUES (?, ?, ?)";
         try {
             setupPreparedStatementWithKey(sql);
-            preparedStatement.setString(1, cursus.getCursusNaam());
-            preparedStatement.setString(2, cursus.getCoordinator());
-            preparedStatement.setString(3, cursus.getNiveau());
+            preparedStatement.setString(1, course.getCourseName());
+            preparedStatement.setString(2, course.getCoordinator());
+            preparedStatement.setString(3, course.getLevel());
             executeInsertStatementWithKey();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException foutmelding) {
+            System.out.println(foutmelding.getMessage());
         }
     }
 
     public void insertCursusFromCSVToDB() {
-        List<Cursus> cursusList = CursusTekstIOTemp.loadCSV("yourCSVFileName.csv");  // Provide the appropriate file name
-        for (Cursus cursus : cursusList) {
-            storeOne(cursus);
+        List<Course> courseList = CursusTekstIOTemp.loadCSV("Cursussen.csv");
+        for (Course course : courseList) {
+            storeOne(course);
         }
     }
 }

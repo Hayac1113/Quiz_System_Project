@@ -1,6 +1,6 @@
 package controller;
 
-import model.Cursus;
+import model.Course;
 import model.Question;
 import testController.CursusTekstIOTemp;
 
@@ -11,7 +11,7 @@ public class TekstIOTestLauncher {
         List<Question> questionList = Question.loadCSV("Vragen.csv");
         System.out.println(questionList);
 
-        List<Cursus> cursusList = CursusTekstIOTemp.loadCSV("Cursussen.csv");
+        List<Course> cursusList = CursusTekstIOTemp.loadCSV("Cursussen.csv");
         System.out.println(cursusList);
     }
 

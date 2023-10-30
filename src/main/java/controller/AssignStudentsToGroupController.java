@@ -3,14 +3,14 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
-import model.Cursus;
+import model.Course;
 import model.Group;
 import model.User;
 
 public class AssignStudentsToGroupController {
 
     @FXML
-    ComboBox<Cursus> courseComboBox;
+    ComboBox<Course> courseComboBox;
     @FXML
     ComboBox<Group> groupComboBox;
     @FXML
