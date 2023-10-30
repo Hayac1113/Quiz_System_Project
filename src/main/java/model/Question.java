@@ -79,10 +79,9 @@ public class Question {
     public static List<Question> loadCSV(String filename) {
         List<Question> listOfQuestion = new ArrayList<>();
         File filename2 = new File(String.format("src/main/resources/CSV bestanden/%s", filename));
-        try {
-            Scanner input = new Scanner(filename2);
-            while (input.hasNextLine()){
-                String [] lineArray = input.nextLine().split(";");
+        try (Scanner input = new Scanner(filename2)) {
+            while (input.hasNextLine()) {
+                String[] lineArray = input.nextLine().split(";");
                 String textQuestion = lineArray[0];
                 String correctAnswer = lineArray[1];
                 String answer2 = lineArray[2];
@@ -91,7 +90,7 @@ public class Question {
                 String quizName = lineArray[5];
                 listOfQuestion.add(new Question(textQuestion, correctAnswer, answer2, answer3, answer4, quizName));
             }
-        } catch (FileNotFoundException notFound){
+        } catch (FileNotFoundException notFound) {
             System.out.println("File not found");
         }
         return listOfQuestion;
