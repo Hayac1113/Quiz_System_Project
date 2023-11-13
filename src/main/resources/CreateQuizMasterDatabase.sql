@@ -101,11 +101,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `QuizMaster`.`Question` ;
 
 CREATE TABLE IF NOT EXISTS `QuizMaster`.`Question` (
-  `textQuestion` VARCHAR(200) NOT NULL,
-  `correctAnswer` VARCHAR(45) NOT NULL,
-  `answer2` VARCHAR(45) NOT NULL,
-  `answer3` VARCHAR(45) NOT NULL,
-  `answer4` VARCHAR(45) NOT NULL,
+  `textQuestion` VARCHAR(250) NOT NULL,
+  `correctAnswer` VARCHAR(250) NOT NULL,
+  `answer2` VARCHAR(250) NOT NULL,
+  `answer3` VARCHAR(250) NOT NULL,
+  `answer4` VARCHAR(250) NOT NULL,
   `quizName` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`textQuestion`, `quizName`),
   INDEX `fk_Question_Quiz1_idx` (`quizName` ASC) VISIBLE,

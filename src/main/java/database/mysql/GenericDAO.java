@@ -1,11 +1,15 @@
 package database.mysql;
 
+import model.Course;
+
 import java.util.List;
 
-public interface GenericDAO<T, U> {
+public interface GenericDAO<T> {
     public List<T> getAll();
 
-    public T getOneByPK(U PK);
+    public T getOneById(int id);
 
     public void storeOne(T type);
+
+    public void updateOne(T type);
 }

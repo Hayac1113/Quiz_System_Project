@@ -4,36 +4,49 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageCoursesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageCoursesController">
     <Label layoutX="14.0" layoutY="14.0" text="Cursusbeheer">
         <font>
             <Font size="18.0" />
         </font>
     </Label>
-    <Label layoutX="14.0" layoutY="49.0" text="Selecteer cursus">
+    <Label layoutX="14.0" layoutY="49.0" text="Selecteer course">
         <font>
             <Font size="18.0" />
         </font>
     </Label>
-    <ListView fx:id="courseList" layoutX="14.0" layoutY="78.0" prefHeight="200.0" prefWidth="281.0" />
-    <Button fx:id="newCourseButton" layoutX="13.0" layoutY="285.0" mnemonicParsing="false" onAction="#doCreateCourse" text="Nieuw">
+    <ListView fx:id="courseList" layoutX="15.0" layoutY="127.0" prefHeight="200.0" prefWidth="281.0" />
+    <Button fx:id="newCourseButton" layoutX="14.0" layoutY="334.0" mnemonicParsing="false" onAction="#doCreateCourse" text="Nieuw">
         <font>
             <Font size="14.0" />
         </font>
     </Button>
-    <Button layoutX="113.0" layoutY="285.0" mnemonicParsing="false" onAction="#doUpdateCourse" text="Wijzig">
+    <Button layoutX="114.0" layoutY="334.0" mnemonicParsing="false" onAction="#doUpdateCourse" text="Wijzig">
         <font>
             <Font size="14.0" />
         </font>
     </Button>
-    <Button layoutX="217.0" layoutY="285.0" mnemonicParsing="false" onAction="#doDeleteCourse" text="Verwijder">
+    <Button layoutX="218.0" layoutY="334.0" mnemonicParsing="false" onAction="#doDeleteCourse" text="Verwijder">
         <font>
             <Font size="14.0" />
         </font>
     </Button>
-    <Button fx:id="menuButton" layoutX="14.0" layoutY="329.0" mnemonicParsing="false" onAction="#doMenu" text="Menu">
+    <Button fx:id="menuButton" layoutX="15.0" layoutY="378.0" mnemonicParsing="false" onAction="#doMenu" text="Uitloggen">
         <font>
             <Font size="14.0" />
         </font>
     </Button>
+   <Label fx:id="studentCounter" layoutX="16.0" layoutY="85.0" prefHeight="21.0" prefWidth="504.0">
+      <font>
+         <Font size="15.0" />
+      </font></Label>
+   <Button layoutX="126.0" layoutY="380.0" mnemonicParsing="false" onAction="#handleSaveOverview" prefHeight="25.0" prefWidth="169.0" text="Print resultaat overzicht">
+      <font>
+         <Font size="14.0" />
+      </font></Button>
+   <Button layoutX="126.0" layoutY="423.0" mnemonicParsing="false" onAction="#generateReport" prefHeight="25.0" prefWidth="169.0" text="Tekstbestand aanmaken">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
 </AnchorPane>

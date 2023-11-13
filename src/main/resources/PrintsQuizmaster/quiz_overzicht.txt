@@ -1,0 +1,7 @@
+Cursus: Engels A
+  Quiz: Engels A 1, aantal vragen: 13
+  Quiz: Engels A 2, aantal vragen: 12
+  Quiz: Engels A 4, aantal vragen: 13
+Cursus: Engels C
+
+Het gemiddelde aantal vragen over alle cursussen is: 12

@@ -36,10 +36,10 @@ public class SceneManager {
         getScene("/view/fxml/login.fxml");
     }
 
-    public void showWelcomeScene() {
+    public void showWelcomeScene(int userId) {
         FXMLLoader loader = getScene("/view/fxml/welcomeScene.fxml");
         WelcomeController controller = loader.getController();
-        controller.setup();
+        controller.setup(userId);
     }
 
     public void showManageUserScene() {
@@ -78,10 +78,10 @@ public class SceneManager {
         controller.setup(group);
     }
 
-    public void showManageQuizScene() {
+    public void showManageQuizScene(Course course) {
         FXMLLoader loader = getScene("/view/fxml/manageQuizzes.fxml");
         ManageQuizzesController controller = loader.getController();
-        controller.setup();
+        controller.setup(course);
     }
 
     public void showCreateUpdateQuizScene(Quiz quiz) {
@@ -90,10 +90,10 @@ public class SceneManager {
         controller.setup(quiz);
     }
 
-    public void showManageQuestionsScene() {
+    public void showManageQuestionsScene(Quiz quiz) {
         FXMLLoader loader = getScene("/view/fxml/manageQuestions.fxml");
         ManageQuestionsController controller = loader.getController();
-        controller.setup();
+        controller.setup(quiz);
     }
 
     public void showCreateUpdateQuestionScene(Question question) {
@@ -102,39 +102,39 @@ public class SceneManager {
         controller.setup(question);
     }
 
-    public void showStudentSignInOutScene() {
+    public void showStudentSignInOutScene(int userId) {
         FXMLLoader loader = getScene("/view/fxml/studentSignInOut.fxml");
         StudentSignInOutController controller = loader.getController();
-        controller.setup();
+        controller.setup(userId);
     }
 
-    public void showSelectQuizForStudent() {
+    public void showSelectQuizForStudent(int userId) {
         FXMLLoader loader = getScene("/view/fxml/selectQuizForStudent.fxml");
         SelectQuizForStudentController controller = loader.getController();
-        controller.setup();
+        controller.setup(userId);
     }
 
-    public void showFillOutQuiz(Quiz quiz) {
+    public void showFillOutQuiz(int quizId, int loginUserId) {
         FXMLLoader loader = getScene("/view/fxml/fillOutQuiz.fxml");
         FillOutQuizController controller = loader.getController();
-        controller.setup(quiz);
+        controller.setup(quizId, loginUserId);
     }
 
-    public void showStudentFeedback(Quiz quiz) {
+    public void showStudentFeedback(int userId, Quiz quiz) {
         FXMLLoader loader = getScene("/view/fxml/studentFeedback.fxml");
         StudentFeedbackController controller = loader.getController();
-        controller.setup(quiz);
+        controller.setup(userId, quiz);
     }
 
-    public void showCoordinatorDashboard() {
+    public void showCoordinatorDashboard(int userId) {
         FXMLLoader loader = getScene("/view/fxml/coordinatorDashboard.fxml");
         CoordinatorDashboardController controller = loader.getController();
-        controller.setup();
+        controller.setup(userId);
     }
 
     public void showAssignStudentsToGroupScene() {
         FXMLLoader loader = getScene("/view/fxml/assignStudentsToGroup.fxml");
-        AssignStudentsToGroupController controller = loader.getController();
+        AssignStudentsToGroupController controller= loader.getController();
         controller.setup();
     }
 }

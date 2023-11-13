@@ -2,27 +2,27 @@ package model;
 
 public class Group {
 
-    private String courseName;
+    private Course courseName;
     private String groupName;
-    private int maxNumberStudent;
-    private  String teacher;
+    private int maxNumberStudents;
+    private User teacher;
 
-    public Group(String courseName, String groupName, int maxNumberStudent, String teacher) {
+    public Group(Course courseName, String groupName, int maxNumberStudent, User teacher) {
         this.courseName = courseName;
         this.groupName = groupName;
-        this.maxNumberStudent = maxNumberStudent;
+        this.maxNumberStudents = maxNumberStudent;
         this.teacher = teacher;
     }
 
-    public Group(){
-        this("Onbekend", "Onbekend", 0, "Onbekend");
+    public Group() {
+        this(new Course(), "Onbekend", 0, new User());
     }
 
-    public String getCourseName() {
+    public Course getCourseName() {
         return courseName;
     }
 
-    public void setCourseName(String courseName) {
+    public void setCourseName(Course courseName) {
         this.courseName = courseName;
     }
 
@@ -34,24 +34,24 @@ public class Group {
         this.groupName = groupName;
     }
 
-    public int getMaxNumberStudent() {
-        return maxNumberStudent;
+    public int getMaxNumberStudents() {
+        return maxNumberStudents;
     }
 
-    public void setMaxNumberStudent(int maxNumberStudent) {
-        this.maxNumberStudent = maxNumberStudent;
+    public void setMaxNumberStudents(int maxNumberStudents) {
+        this.maxNumberStudents = maxNumberStudents;
     }
 
-    public String getTeacher() {
+    public User getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(String teacher) {
+    public void setTeacher(User teacher) {
         this.teacher = teacher;
     }
 
     @Override
     public String toString() {
-        return String.format("%s %s %d %s\n", courseName, groupName, maxNumberStudent, teacher);
+        return String.format("%s %s %d %s\n", courseName, groupName, maxNumberStudents, teacher);
     }
 }

@@ -1,42 +1,30 @@
 package model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class Quiz {
-    private String quizName;
-    private String level;
-    private int succesDefinition;
-    private String courseName;
+    private final int quizId;
+    private final String quizName;
+    private final String level;
+    private final int succesDefinition;
+    private final Course course;
 
-    public Quiz(String quizName, String level, int succesDefinition, String courseName) {
+    public Quiz(int quizId, String quizName, String level, int succesDefinition, Course course) {
+        this.quizId = quizId;
         this.quizName = quizName;
         this.level = level;
         this.succesDefinition = succesDefinition;
-        this.courseName = courseName;
+        this.course = course;
+    }
+
+    public Quiz(String quizName, String level, int succesDefinition, Course course) {
+        this(0, quizName, level, succesDefinition, course);
     }
 
     public Quiz() {
-        this("Onbekend", "Onbekend", 0, "Onbekend");
+        this(0, "Onbekend", "Onbekend", 0, new Course());
     }
 
-    public void setQuizName(String quizName) {
-        this.quizName = quizName;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    public void setSuccesDefinition(int succesDefinition) {
-        this.succesDefinition = succesDefinition;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public int getQuizId() {
+        return quizId;
     }
 
     public String getQuizName() {
@@ -51,31 +39,12 @@ public class Quiz {
         return succesDefinition;
     }
 
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public static List<Quiz> loadCSV(String filename) {
-        List<Quiz> listOfQuizzes = new ArrayList<>();
-        File filename2 = new File(String.format("src/main/resources/CSV bestanden/%s", filename));
-        try (Scanner input = new Scanner(filename2)) {
-            while (input.hasNextLine()) {
-                String[] lineArray = input.nextLine().split(",");
-                String quizName = lineArray[0];
-                String level = lineArray[1];
-                String succesDefinition = lineArray[2];
-                String courseName = lineArray[3];
-                listOfQuizzes.add(new Quiz(quizName, level, Integer.parseInt(succesDefinition), courseName));
-            }
-        } catch (FileNotFoundException notFound) {
-            System.out.println("File not found");
-        }
-        return listOfQuizzes;
-
+    public Course getCourse() {
+        return course;
     }
 
     @Override
     public String toString() {
-        return String.format("%s %s %d %s \n", quizName, level, succesDefinition, courseName);
+        return String.format("%s %s %d %s \n", quizName, level, succesDefinition, course.getCourseName());
     }
 }

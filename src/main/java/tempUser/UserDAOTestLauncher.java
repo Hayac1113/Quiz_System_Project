@@ -14,7 +14,8 @@ public class UserDAOTestLauncher {
         UserDAO userDAO = new UserDAO(dBaccess);
 
         // Één user opslaan in de database.
-        userDAO.storeOne(new User("ravelmau","pw123", "Maurice","","Ravel","Student"));
+        User ravelUser = new User("ravelmau","pw123", "Maurice","","Ravel","Student");
+        userDAO.storeOne(ravelUser);
 
         // Alle users uitlezen uit de database.
         List<User> usersInTheDatabase = userDAO.getAll();
@@ -23,8 +24,7 @@ public class UserDAOTestLauncher {
         }
 
         // Één user uitlezen op basis van zijn primary key.
-        User user = userDAO.getOneByPK("ravelmau");
-        System.out.println();
+        User user = userDAO.getOneById(1);
         System.out.println(user);
 
         // Verbinding met database afsluiten

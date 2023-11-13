@@ -1,51 +1,45 @@
 package model;
 
-//Create a class Course and the attributes:
+//Aanmaken van de klasse Course en declareren van de variabelen
 public class Course {
-    private String courseName;
-    private String coordinator;
-    private String level;
+    private final int courseId;
+    private final String courseName;
+    private final String level;
+    private final User coordinator;
 
-    // Constructor
-    public Course(String courseName, String coordinator, String level) {
+    public Course(int courseId, String courseName, String level, User coordinator) {
+        this.courseId = courseId;
         this.courseName = courseName;
-        this.coordinator = coordinator;
         this.level = level;
+        this.coordinator = coordinator;
+    }
+
+    public Course(String courseName, String level, User coordinator) {
+        this(0, courseName, level, coordinator);
     }
 
     public Course() {
-        this("Unknown", "Unknown", "Unknown");
+        this(0, "Onbekend", "Onbekend", new User());
     }
 
-    // Getters and Setters for courseName
+    public int getCourseId() {
+        return courseId;
+    }
+
     public String getCourseName() {
         return courseName;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
-    // Getters and Setters for coordinator
-    public String getCoordinator() {
-        return coordinator;
-    }
-
-    public void setCoordinator(String coordinator) {
-        this.coordinator = coordinator;
-    }
-
-    // Getters and Setters for level
     public String getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public User getCoordinator() {
+        return coordinator;
     }
 
     @Override
     public String toString() {
-        return String.format("%s %s %s\n", courseName, coordinator, level);
+        return String.format("%s", courseName);
     }
 }

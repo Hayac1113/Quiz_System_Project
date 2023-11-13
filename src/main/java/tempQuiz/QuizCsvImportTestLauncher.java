@@ -1,15 +1,13 @@
 package tempQuiz;
 
+
 import database.mysql.DBAccess;
 import database.mysql.QuizDAO;
+import model.Course;
 import model.Quiz;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,7 +17,7 @@ public class QuizCsvImportTestLauncher {
         dBaccess.openConnection();
         QuizDAO quizDAO = new QuizDAO(dBaccess);
 
-        List<Quiz> listOfQuizzes = new ArrayList<>();
+//        List<Quiz> listOfQuizzes = new ArrayList<>();
         File filename = new File("src/main/resources/CSV bestanden/Quizzen.csv");
         try {
             Scanner input = new Scanner(filename);
@@ -29,32 +27,17 @@ public class QuizCsvImportTestLauncher {
                 String level = lineArray[1];
                 String succesDefinition = lineArray[2];
                 String courseName = lineArray[3];
-                listOfQuizzes.add(new Quiz(quizName, level, Integer.parseInt(succesDefinition), courseName));
+                Course course = quizDAO.getCourseByName(courseName);
+                quizDAO.storeOne(new Quiz(quizName, level, Integer.parseInt(succesDefinition), course));
             }
         } catch (FileNotFoundException notFound) {
             System.out.println("File not found");
         }
 
-        // foreign constraint uit
-        try {
-            Statement stmt = dBaccess.getConnection().createStatement();
-            stmt.execute("Set FOREIGN_KEY_CHECKS = 0");
-            stmt.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        List<Quiz> quizList = quizDAO.getAll();
 
-        for (Quiz quiz : listOfQuizzes) {
-            quizDAO.storeOne(quiz);
-        }
-
-        // foreign constraint aan
-        try {
-            Statement stmt = dBaccess.getConnection().createStatement();
-            stmt.execute("Set FOREIGN_KEY_CHECKS = 1");
-            stmt.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        for (Quiz quiz : quizList) {
+            System.out.println(quiz);
         }
 
         dBaccess.closeConnection();

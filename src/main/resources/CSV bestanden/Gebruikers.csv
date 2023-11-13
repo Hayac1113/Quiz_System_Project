@@ -198,3 +198,8 @@ bloemca,IXkM[ijWLS,Cassandra,,Bloemers,Student
 oostlna,%UU_XtE1Q0,Naoual,,Oostland,Student
 bravemi,i5Y7%cM!2P,Mirna,,Bravenboer,Student
 buskelu,.o;fHk_:Ma,Lucy,,Buskermolen,Docent
+s1,s1,dummyStudent1FirstName,dummyStudent1Infix,dummyStudent1LastName,Student
+d1,d1,dummyDocent1FirstName,dummyDocent1Infix,dummyDocent1LastName,Docent
+c1,c1,dummyCoördinator1FirstName,dummyCoördinator1Infix,dummyCoördinator1LastName,Coördinator
+a1,a1,dummyAdministrator1FirstName,dummyAdministrator1Infix,dummyAdministrator1LastName,Administrator
+f1,f1,dummyFunctioneelBeheerderFirstName,dummyFunctioneelBeheerderInfix,FunctioneelBeheerderLastName,Functioneel Beheerder
